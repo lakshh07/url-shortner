@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Url Shortner | Lakshay</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="hello">URL SHORTNER</h1>
+      <form action="/shortUrls" method="POST" class="my-4 form-inline">
+        <label for="fullUrl" class="sr-only">Url</label>
+        <input
+          required
+          placeholder="Shorten a link here..."
+          type="url"
+          name="fullUrl"
+          id="fullUrl"
+          class="form-control col mr-2"
+        />
+        <button class="btn btn-success" type="submit">Shrink</button>
+      </form>
+      <table
+        class="
+          table
+          my-5
+          table-striped table-dark table-responsive-sm table-hover
+        "
+      >
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(shortUrl=> { %>
+          <tr>
+            <td class="">
+              <a
+                href="<%= shortUrl.full %>"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <%= shortUrl.full %>
+              </a>
+            </td>
+            <td class="">
+              <a
+                href="/<%= shortUrl.short %>"
+                target="_blank"
+                rel="noopener noreferrer"
+                id="myShort"
+                value="<%= shortUrl.short %>"
+              >
+                <%= shortUrl.short %>
+              </a>
+            </td>
+            <td class=""><%= shortUrl.clicks %></td>
+            <td class="">
+              <div class="form">
+                <button
+                  onclick='copytext(currentUrl+"<%= shortUrl.short %>")'
+                  class="btn btn-primary ml-auto btn-sm"
+                >
+                  Copy Url
+                </button>
+                <form action="/delete" class="form" method="post">
+                  <a href=""
+                    ><button
+                      name="urlId"
+                      value="<%= shortUrl._id %>"
+                      class="ml-auto btn btn-danger btn-sm"
+                      type="submit"
+                    >
+                      Delete
+                    </button></a
+                  >
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <p class="me-6 my-4">Designed and Developed by &copy Lakshay Maini</p>
+    </div>
+
+    <script src="/js/function.js"></script>
+  </body>
+</html>

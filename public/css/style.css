@@ -1,0 +1,31 @@
+body {
+  background-color: #222831;
+  color: white;
+}
+
+h1 {
+  padding: 30px;
+  margin: 30px;
+  color: white;
+  text-align: center;
+}
+
+a {
+  color: rgb(221, 221, 221);
+}
+
+th {
+  color: white;
+}
+
+.btn-sm {
+  font-size: 12px;
+}
+
+.form {
+  display: flex;
+}
+
+.form button {
+  margin-right: 10px;
+}
